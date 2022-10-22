@@ -1,0 +1,17 @@
+<svg id="logo-footer" xmlns="http://www.w3.org/2000/svg" width="135" height="34" viewBox="0 0 135 34">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 36px;
+        fill: #fff;
+        font-family: Quicksand;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #283147;
+      }
+    </style>
+  </defs>
+  <text id="Agency." class="cls-1" x="0.438" y="25.595">Agency<tspan class="cls-2">.</tspan></text>
+</svg>
