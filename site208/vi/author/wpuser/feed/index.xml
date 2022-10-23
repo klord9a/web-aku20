@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>wpuser &#8211; Site208</title>
+	<atom:link href="/site208/vi/author/wpuser/feed" rel="self" type="application/rss+xml" />
+	<link href="">/site208/vi</link>
+	<description>Chỉ là một trang MySite_aku20 Sites khác</description>
+	<lastbuilddate>Thu, 26/09/2019 08:30:41 +0</lastbuilddate>
+	<language>vi</language>
+	<sy:updateperiod>
+	hàng giờ	</sy:updateperiod>
+	<sy:updatefrequency>
+	1	</sy:updatefrequency>
+	<generator>https://wordpress.org/?v=6.0.3</generator>
+	<item>
+		<title>Hello world!</title>
+		<link href="">/site208/vi/2019/09/26/hello-world</link>
+					<comments>/site208/vi/2019/09/26/hello-world#comments</comments>
+		
+		<dc:creator><![CDATA[wpuser]]></dc:creator>
+		<pubdate>Thu, 26/09/2019 08:30:41 +0</pubdate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid ispermalink="false">https://jupiterx.artbees.net/event-listing/?p=1</guid>
+
+					<description><![CDATA[Welcome to Just another Jupiter X Template. This is your first post. Edit or delete it, then start blogging!]]></description>
+										<content:encoded><![CDATA[<p>Welcome to <a href="http://jupiterx.artbees.net/">Just another Jupiter X Template</a>. This is your first post. Edit or delete it, then start blogging!</p>
+]]></content:encoded>
+					
+					<wfw:commentrss>/site208/vi/2019/09/26/hello-world/feed</wfw:commentrss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
