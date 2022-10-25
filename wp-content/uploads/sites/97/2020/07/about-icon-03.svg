@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>.cls-1 {
+        fill: #38214a;
+        fill-rule: evenodd;
+      }</style>
+</defs>
+<path class="cls-1" transform="translate(-1330 -1385)" d="M1384.33,1397.75H1390V1385h-12.75v5.67h-34.5V1385H1330v12.75h5.67v34.5H1330V1445h12.75v-5.67h34.5V1445H1390v-12.75h-5.67v-34.5Zm-52.91-1.41v-9.93h9.92v9.93h-9.92Zm9.93,47.25h-9.94v-9.93h9.93v9.93h0.01Zm35.9-11.34v5.66h-34.49v-5.66h-5.67v-34.5h5.67v-5.67h34.49v5.67h5.67v34.5h-5.67Zm11.34,1.41v9.93h-9.93v-9.93h9.93Zm-9.93-37.32v-9.93h9.93v9.93h-9.93Z"/>
+</svg>
