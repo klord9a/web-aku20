@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="208" height="208" viewBox="0 0 208 208">
+  <defs>
+    <filter id="Ellipse_2" x="0" y="0" width="208" height="208" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="service-icon-02" transform="translate(-856 -1338)">
+    <g transform="matrix(1, 0, 0, 1, 856, 1338)" filter="url(#Ellipse_2)">
+      <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="50" cy="50" r="50" transform="translate(54 44)" fill="#fff"/>
+    </g>
+    <g id="Group_168" data-name="Group 168" transform="translate(683.155 1165.348)">
+      <path id="Path_2790" data-name="Path 2790" d="M247.925,254.434a5.519,5.519,0,1,0,5.521-5.518A5.519,5.519,0,0,0,247.925,254.434Z" transform="translate(21.078 37.49)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      <path id="Path_2791" data-name="Path 2791" d="M250.039,255.481v-6.375l4.264-4.264" transform="translate(24.485 30.925)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2792" data-name="Path 2792" d="M235.408,253.252a5.519,5.519,0,1,0,5.521-5.518A5.521,5.521,0,0,0,235.408,253.252Z" transform="translate(0.907 35.585)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      <path id="Path_2793" data-name="Path 2793" d="M255.419,256.667a5.519,5.519,0,1,0,5.521-5.518A5.521,5.521,0,0,0,255.419,256.667Z" transform="translate(33.155 41.088)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      <path id="Path_2794" data-name="Path 2794" d="M255.333,244.827v4.391l5.745,5.745v6.375" transform="translate(33.017 30.9)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2795" data-name="Path 2795" d="M252.509,256.417a5.519,5.519,0,1,1-5.518-5.518A5.518,5.518,0,0,1,252.509,256.417Z" transform="translate(10.676 40.685)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      <path id="Path_2796" data-name="Path 2796" d="M249.389,244.842v3.7l-5.745,5.745v6.375" transform="translate(14.18 30.925)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2797" data-name="Path 2797" d="M238.9,253.718l5.343-5.527v-3.349" transform="translate(6.941 30.925)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2798" data-name="Path 2798" d="M261.655,253.707a5.518,5.518,0,1,0,5.518-5.521A5.518,5.518,0,0,0,261.655,253.707Z" transform="translate(43.204 36.313)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+      <path id="Path_2799" data-name="Path 2799" d="M260.1,244.827v4.624l5.745,5.745" transform="translate(40.7 30.9)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2800" data-name="Path 2800" d="M306.191,250.592c-.376,0-.747.023-1.115.055a20.115,20.115,0,0,0-33.411-19.422A16.9,16.9,0,0,0,248.1,246.753c0,.044.005.086.008.128a14.468,14.468,0,0,0,1.214,28.886h56.873a12.587,12.587,0,0,0,0-25.175Z" fill="#d3e7fe" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2801" data-name="Path 2801" d="M255.546,240.842a15.465,15.465,0,0,0-16.3-6.738" transform="translate(7.091 13.043)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_2802" data-name="Path 2802" d="M265.175,232.073a15.443,15.443,0,0,1-5.346,15.094" transform="translate(40.261 10.347)" fill="none" stroke="#347aff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
