@@ -178,7 +178,7 @@
 					isStore = $this.data( 'is-store-listing' ),
 					query   = nav.query;
 
-				if ( query.post__in && query.post__in.length && 0 >= query.post__in.indexOf( 'is-front' ) ) {
+				if ( query && query.post__in && query.post__in.length && 0 >= query.post__in.indexOf( 'is-front' ) ) {
 
 					var storeType  = query.post__in[1],
 						storeSlug  = query.post__in[2],
@@ -893,7 +893,7 @@
 				}
 
 				if ( ! $container.length ) {
-					$container = $wrapper;
+					$container = $scope;
 					widgetSettings = $scope.data( 'widget-settings' );
 				}
 
@@ -1186,8 +1186,9 @@
 
 			event.preventDefault();
 
-			var self = this,
-				page = parseInt( self.container.data( 'page' ), 10 );
+			var self     = this,
+				$wrapper = self.container.closest( '.jet-listing-grid' ),
+				page     = parseInt( self.container.data( 'page' ), 10 );
 
 			page++;
 
@@ -1196,6 +1197,8 @@
 				opacity: '0.5',
 				cursor: 'default',
 			});
+
+			$wrapper.addClass( 'jet-listing-grid-loading' );
 
 			JetEngine.ajaxGetListing( {
 				handler: 'listing_load_more',
@@ -1208,6 +1211,7 @@
 				page: page,
 			}, function( response ) {
 
+				$wrapper.removeClass( 'jet-listing-grid-loading' );
 				self.button.removeAttr( 'style' );
 
 				if ( response.success && page === self.pages ) {
@@ -1215,15 +1219,17 @@
 				}
 				$( document ).trigger( 'jet-engine/listing-grid/after-load-more', [ self, response ] );
 			}, function() {
+				$wrapper.removeClass( 'jet-listing-grid-loading' );
 				self.button.removeAttr( 'style' );
 			} );
 
 		},
 
 		handleInfiniteScroll: function( event ) {
-			var self  = this,
-				page  = parseInt( self.container.data( 'page' ), 10 ),
-				pages = parseInt( self.container.data( 'pages' ), 10 );
+			var self     = this,
+				$wrapper = self.container.closest( '.jet-listing-grid' ),
+				page     = parseInt( self.container.data( 'page' ), 10 ),
+				pages    = parseInt( self.container.data( 'pages' ), 10 );
 
 			if ( self.container.hasClass( 'jet-listing-not-found' ) ) {
 				return;
@@ -1247,6 +1253,7 @@
 
 			page++;
 			JetEngine.lazyLoading = true;
+			$wrapper.addClass( 'jet-listing-grid-loading' );
 
 			JetEngine.ajaxGetListing( {
 				handler: 'listing_load_more',
@@ -1259,9 +1266,11 @@
 				page: page,
 			}, function( response ) {
 				JetEngine.lazyLoading = false;
+				$wrapper.removeClass( 'jet-listing-grid-loading' );
 				$( document ).trigger( 'jet-engine/listing-grid/after-load-more', [ self, response ] );
 			}, function() {
 				JetEngine.lazyLoading = false;
+				$wrapper.removeClass( 'jet-listing-grid-loading' );
 			} );
 
 		},
@@ -1476,7 +1485,7 @@
 
 			defaultOptions = {
 				customPaging: function( slider, i ) {
-					return $( '<span />' ).text( i + 1 );
+					return $( '<span />' ).text( i + 1 ).attr( 'role', 'tab' );
 				},
 				slide: '.jet-listing-grid__item',
 				dotsClass: 'jet-slick-dots',
