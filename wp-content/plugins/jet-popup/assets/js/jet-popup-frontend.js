@@ -2,7 +2,13 @@
 
 	'use strict';
 
-	var JetPopup = {
+	var JetPopupFrontend = {
+
+		addedScripts: {},
+
+		addedStyles: {},
+
+		addedAssetsPromises: [],
 
 		init: function() {
 			var $popup_list = $( '.jet-popup:not(.jet-popup--single-preview)' ),
@@ -19,16 +25,20 @@
 				} );
 			}
 
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/widget', JetPopup.elementorWidget );
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/widget', JetPopupFrontend.elementorWidget );
 
 			var widgets = {
-				'jet-popup-action-button.default' : JetPopup.widgetPopupActionButton,
-				'jet-popup-mailchimp.default' : JetPopup.widgetPopupMailchimp
+				'jet-popup-action-button.default' : JetPopupFrontend.widgetPopupActionButton,
+				'jet-popup-mailchimp.default' : JetPopupFrontend.widgetPopupMailchimp
 			};
 
 			$.each( widgets, function( widget, callback ) {
 				elementorFrontend.hooks.addAction( 'frontend/element_ready/' + widget, callback );
 			});
+
+			$( window ).on( 'jet-popup/ajax/frontend-init', ( event, payload ) => {
+				JetPopupFrontend.maybeElementorFrontendInit( payload.$container );
+			} );
 
 		},
 
@@ -442,7 +452,88 @@
 
 				return re.test( email );
 			}
-		}
+		},
+
+		loadScriptAsync: function( script, uri ) {
+
+			if ( JetPopupFrontend.addedScripts.hasOwnProperty( script ) ) {
+				return script;
+			}
+
+			JetPopupFrontend.addedScripts[ script ] = uri;
+
+			return new Promise( function( resolve, reject ) {
+				var tag = document.createElement( 'script' );
+
+				tag.src    = uri;
+				tag.async  = true;
+				tag.onload = function() {
+					resolve( script );
+				};
+
+				document.head.appendChild( tag );
+			} );
+		},
+
+		loadStyle: function( style, uri ) {
+
+			if ( JetPopupFrontend.addedStyles.hasOwnProperty( style ) && JetPopupFrontend.addedStyles[ style ] ===  uri) {
+				return style;
+			}
+
+			JetPopupFrontend.addedStyles[ style ] = uri;
+
+			return new Promise( function( resolve, reject ) {
+				var tag = document.createElement( 'link' );
+
+				tag.id      = style;
+				tag.rel     = 'stylesheet';
+				tag.href    = uri;
+				tag.type    = 'text/css';
+				tag.media   = 'all';
+				tag.onload  = function() {
+					resolve( style );
+				};
+
+				document.head.appendChild( tag );
+			});
+		},
+
+		assetsLoaderPromise: function() {
+			return Promise.all( JetPopupFrontend.addedAssetsPromises );
+		},
+
+		maybeElementorFrontendInit: function( $popupContainer ) {
+			$popupContainer.find( 'div[data-element_type]' ).each( function() {
+				var $this       = $( this ),
+				    elementType = $this.data( 'element_type' );
+
+				if ( ! elementType ) {
+					return;
+				}
+
+				try {
+					if ( 'widget' === elementType ) {
+						elementType = $this.data( 'widget_type' );
+
+						if ( window.elementorFrontend && window.elementorFrontend.hooks ) {
+							window.elementorFrontend.hooks.doAction( 'frontend/element_ready/widget', $this, $ );
+						}
+					}
+
+					if ( window.elementorFrontend && window.elementorFrontend.hooks ) {
+						window.elementorFrontend.hooks.doAction( 'frontend/element_ready/global', $this, $ );
+						window.elementorFrontend.hooks.doAction( 'frontend/element_ready/' + elementType, $this, $ );
+					}
+
+				} catch ( err ) {
+					console.log(err);
+					$this.remove();
+
+					return false;
+				}
+			} );
+		},
 	};
 
 	/**
@@ -793,7 +884,7 @@
 				$( 'body' ).on( 'click', selector, function( event ) {
 					event.preventDefault();
 
-					self.showPopup();
+					self.showPopup( $( this ).data( 'popup' ) );
 				} );
 			}
 		}
@@ -947,7 +1038,8 @@
 				error: function( jqXHR, ajaxSettings ) {},
 				success: function( data, textStatus, jqXHR ) {
 					var successType = data.type,
-						content     = data.content || '';
+						contentData = data.content || false,
+						$popupContainer = $( '.jet-popup__container-content', $popup );
 
 					$popup.removeClass( 'jet-popup--loading-state' );
 
@@ -961,22 +1053,59 @@
 					}
 
 					if ( 'success' === successType ) {
-						$content.html( content );
+						let popupContent   = contentData['content'],
+						    popupScripts   = contentData['scripts'],
+						    popupStyles    = contentData['styles'];
 
-						ajaxContentLoaded = true;
+						for ( let scriptHandler in popupScripts ) {
+							JetPopupFrontend.addedAssetsPromises.push( JetPopupFrontend.loadScriptAsync( scriptHandler, popupScripts[ scriptHandler ] ) );
+						}
 
-						self.elementorFrontendInit();
+						for ( let styleHandler in popupStyles ) {
+							JetPopupFrontend.addedAssetsPromises.push( JetPopupFrontend.loadStyle( styleHandler, popupStyles[ styleHandler ] ) );
+						}
 
-						// Show Popup Container
-						animeContainerInstance = anime( animeContainer );
+						JetPopupFrontend.assetsLoaderPromise().then( function( value ) {
+							ajaxContentLoaded = true;
 
-						// Ajax Success Trigger
-						$window.trigger( 'jet-popup/render-content/ajax/success', {
-							self: self,
-							popup_id: id,
-							data: popupData,
-							request: data
+							// Ajax Success Trigger
+							$window.trigger( 'jet-popup/render-content/ajax/success', {
+								self: self,
+								popup_id: id,
+								data: popupData,
+								request: data
+							} );
+
+							// Render content
+							if ( popupContent ) {
+								$popupContainer.html( popupContent );
+							}
+
+							// Before ajax frontend init
+							$( window ).trigger( 'jet-popup/ajax/frontend-init/before', {
+								$container: $popupContainer,
+								content: popupContent,
+							} );
+
+							// Frontend init
+							$( window ).trigger( 'jet-popup/ajax/frontend-init', {
+								$container: $popupContainer,
+								content: popupContent,
+							} );
+
+							// after ajax frontend init
+							$( window ).trigger( 'jet-popup/ajax/frontend-init/after', {
+								$container: $popupContainer,
+								content: popupContent,
+							} );
+
+							// Show Popup Container
+							animeContainerInstance = anime( animeContainer );
+
+						}, function( reason ) {
+							console.log( 'Assets Loaded Error' );
 						} );
+
 					}
 				}
 			} );
@@ -1462,6 +1591,6 @@
 
 	}
 
-	$( window ).on( 'elementor/frontend/init', JetPopup.init );
+	$( window ).on( 'elementor/frontend/init', JetPopupFrontend.init );
 
 }( jQuery, window.elementorFrontend ) );

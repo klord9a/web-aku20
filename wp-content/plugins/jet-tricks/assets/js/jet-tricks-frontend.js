@@ -290,7 +290,7 @@
 			function onLoaded() {
 				var deviceHeight = getDeviceHeight();
 
-				heightCalc = deviceHeight + maskHeightAdv;
+				heightCalc = +deviceHeight + maskHeightAdv;
 
 				if ( heightCalc < $contentInner.height() ) {
 
