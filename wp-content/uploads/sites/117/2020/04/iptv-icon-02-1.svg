@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 79 63" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<style>.cls-1 {
+        fill: #f8636b;
+        fill-rule: evenodd;
+        opacity: 0.95;
+        filter: url(#a);
+      }</style>
+<filter id="a" x="769" y="946" width="79" height="63" filterUnits="userSpaceOnUse">
+<feOffset dy="2" in="SourceAlpha" result="offset"/>
+<feGaussianBlur result="blur" stdDeviation="3.162"/>
+<feFlood flood-opacity=".05" result="flood"/>
+<feComposite in2="blur" operator="in" result="composite"/>
+<feBlend in="SourceGraphic" result="blend"/>
+<feImage x="780.031" y="955" width="55.969" height="40" preserveAspectRatio="none" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTUuOTY5IiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgNTUuOTY5IDQwIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjU1Ljk2OSIgeTE9IjI1Ljk0OCIgeDI9IjAiIHkyPSIxNC4wNTIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSItMC4yNSIgc3RvcC1jb2xvcj0iI2M3NDFmYyIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii0wLjI0MyIgc3RvcC1jb2xvcj0iI2M3NDFmYyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEuMjUiIHN0b3AtY29sb3I9IiM1ODUzZjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IGNsYXNzPSJjbHMtMSIgd2lkdGg9IjU1Ljk2OSIgaGVpZ2h0PSI0MCIvPgo8L3N2Zz4K"/>
+<feComposite in2="SourceGraphic" operator="in" result="composite-2"/>
+<feBlend in2="blend" result="blend-2"/>
+</filter>
+</defs>
+<path class="cls-1" transform="translate(-769 -946)" d="m835.7 966.48a39.147 39.147 0 0 0-55.4 0 1.021 1.021 0 0 0 1.442 1.446 37.108 37.108 0 0 1 52.514 0 1.021 1.021 0 1 0 1.444-1.446zm-49.4 6.009a1.022 1.022 0 0 0 0.721 1.745 1.014 1.014 0 0 0 0.721-0.3 28.634 28.634 0 0 1 40.524 0 1.021 1.021 0 0 0 1.442-1.446 30.674 30.674 0 0 0-43.408 1e-3zm21.705-0.5a22.039 22.039 0 0 0-15.709 6.513 1.021 1.021 0 0 0 1.442 1.446 20.166 20.166 0 0 1 28.534 0 1.021 1.021 0 0 0 1.442-1.446 22.038 22.038 0 0 0-15.714-6.516zm0 9.619a6.7 6.7 0 1 0 6.682 6.7 6.7 6.7 0 0 0-6.687-6.703zm0 11.351a4.654 4.654 0 1 1 4.642-4.654 4.652 4.652 0 0 1-4.647 4.651z" data-name="Forma 1"/>
+</svg>
